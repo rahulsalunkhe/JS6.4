@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Expression Check</title>
+	<script type="text/javascript">
+		function expCheck(exp)
+		{
+			var counter = 0;
+			for(i=0; i<exp.length;i++)
+			{
+				if(exp[0] == ')')
+				{
+					counter = 1;
+					break;
+				}
+				if(exp[i] == '(')
+				{
+					counter++;
+				}
+				else if(exp[i] == ')')
+				{
+					counter--;
+				}
+				else
+				{
+					counter = counter;
+				}
+			}
+			if(counter == 0)
+			{
+				document.getElementById('displayMessage').innerHTML = "The expression is a valid Expression";
+				document.getElementById('displayMessage').style.color="green";
+				document.getElementById('displayMessage').style.fontSize = "60px";
+			}	
+			else
+			{
+				document.getElementById('displayMessage').innerHTML = "The expression is not a valid Expression";
+				document.getElementById('displayMessage').style.color="red";
+				document.getElementById('displayMessage').style.fontSize = "60px";
+			}
+		} 
+	</script>
+</head>
+<body>
+<label>Enter the expression to test</label>
+<input type="text" name="expField" id="expField">
+<input type="button" name="submitExp" id="submitExp" value="Submit Expression" onclick="expCheck(document.getElementById('expField').value);">
+<div id="displayMessage">
+
+</div>
+<style type="text/css">
+	div{
+		margin-top: 50px;
+		height: 100px;
+		width: 100%;
+		border: 1px solid black;
+	}
+</style>
+</body>
+</html>
